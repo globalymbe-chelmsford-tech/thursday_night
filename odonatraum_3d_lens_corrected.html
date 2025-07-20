@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Odonatraum 3D Lens - Corrected</title>
+  <style>
+    body { margin: 0; overflow: hidden; background-color: #111; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/3d-force-graph"></script>
+<script>
+const Graph = ForceGraph3D()
+  (document.body)
+    .jsonUrl("odonatraum_graph_data_labeled.json")
+    .nodeAutoColorBy('id')
+    .nodeThreeObjectExtend(true)
+    .nodeLabel(node => node.hover)  // Hover popup
+    .nodeThreeObject(node => {
+      const group = new THREE.Group();
+
+      // Base sphere for node
+      const sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(4),
+        new THREE.MeshBasicMaterial({ color: node.color || '#00ffff' })
+      );
+      group.add(sphere);
+
+      // Create label canvas AFTER measuring text
+      const label = node.label || node.id;
+      const fontSize = 48;
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = fontSize + 'px Arial';
+      const textWidth = context.measureText(label).width;
+      canvas.width = textWidth;
+      canvas.height = fontSize * 1.4;
+
+      // Reapply font after resizing canvas
+      context.font = fontSize + 'px Arial';
+      context.fillStyle = 'white';
+      context.fillText(label, 0, fontSize);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true;
+
+      const spriteMaterial = new THREE.SpriteMaterial({
+        map: texture,
+        transparent: true
+      });
+      const sprite = new THREE.Sprite(spriteMaterial);
+      sprite.scale.set(canvas.width / 10, canvas.height / 10, 1);
+      sprite.position.set(0, 10, 0);
+      group.add(sprite);
+
+      return group;
+    })
+    .onNodeClick(node => {
+      const distance = 140;
+      const distRatio = 1 + 1.5 / Math.hypot(node.x, node.y, node.z);
+      Graph.cameraPosition(
+        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio + distance },
+        node,
+        2000
+      );
+
+      const data = Graph.graphData();
+      Graph.nodeThreeObject(n => {
+        const group = new THREE.Group();
+
+        const isNeighbor = data.links.some(
+          l => (l.source.id === node.id && l.target.id === n.id) ||
+               (l.target.id === node.id && l.source.id === n.id)
+        );
+
+        const color = n.id === node.id ? '#ff0000' :
+                      isNeighbor ? '#ffaa00' : '#666';
+
+        const sphere = new THREE.Mesh(
+          new THREE.SphereGeometry(4),
+          new THREE.MeshBasicMaterial({ color })
+        );
+        group.add(sphere);
+
+        const label = n.label || n.id;
+        const fontSize = 48;
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        context.font = fontSize + 'px Arial';
+        const textWidth = context.measureText(label).width;
+        canvas.width = textWidth;
+        canvas.height = fontSize * 1.4;
+
+        context.font = fontSize + 'px Arial';
+        context.fillStyle = 'white';
+        context.fillText(label, 0, fontSize);
+
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.needsUpdate = true;
+
+        const spriteMaterial = new THREE.SpriteMaterial({
+          map: texture,
+          transparent: true
+        });
+        const sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(canvas.width / 10, canvas.height / 10, 1);
+        sprite.position.set(0, 10, 0);
+        group.add(sprite);
+
+        return group;
+      });
+    });
+</script>
+</body>
+</html>

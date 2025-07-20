@@ -1,0 +1,141 @@
+{
+  "nodes": [
+    {
+      "id": "Aeshna_cyanea",
+      "label": "Aeshna cyanea",
+      "hover": "A moment in the Odonatraum cloud<br>named: Aeshna cyanea"
+    },
+    {
+      "id": "Calopteryx_virgo",
+      "label": "Calopteryx virgo",
+      "hover": "A moment in the Odonatraum cloud<br>named: Calopteryx virgo"
+    },
+    {
+      "id": "Sympetrum_striolatum",
+      "label": "Sympetrum striolatum",
+      "hover": "A moment in the Odonatraum cloud<br>named: Sympetrum striolatum"
+    },
+    {
+      "id": "Libellula_depressa",
+      "label": "Libellula depressa",
+      "hover": "A moment in the Odonatraum cloud<br>named: Libellula depressa"
+    },
+    {
+      "id": "Coenagrion_puella",
+      "label": "Coenagrion puella",
+      "hover": "A moment in the Odonatraum cloud<br>named: Coenagrion puella"
+    },
+    {
+      "id": "Erythromma_najas",
+      "label": "Erythromma najas",
+      "hover": "A moment in the Odonatraum cloud<br>named: Erythromma najas"
+    },
+    {
+      "id": "Cordulegaster_boltonii",
+      "label": "Cordulegaster boltonii",
+      "hover": "A moment in the Odonatraum cloud<br>named: Cordulegaster boltonii"
+    },
+    {
+      "id": "Lestes_viridis",
+      "label": "Lestes viridis",
+      "hover": "A moment in the Odonatraum cloud<br>named: Lestes viridis"
+    },
+    {
+      "id": "Anax_imperator",
+      "label": "Anax imperator",
+      "hover": "A moment in the Odonatraum cloud<br>named: Anax imperator"
+    },
+    {
+      "id": "Enallagma_cyathigerum",
+      "label": "Enallagma cyathigerum",
+      "hover": "A moment in the Odonatraum cloud<br>named: Enallagma cyathigerum"
+    },
+    {
+      "id": "Platycnemis_pennipes",
+      "label": "Platycnemis pennipes",
+      "hover": "A moment in the Odonatraum cloud<br>named: Platycnemis pennipes"
+    },
+    {
+      "id": "Ischnura_elegans",
+      "label": "Ischnura elegans",
+      "hover": "A moment in the Odonatraum cloud<br>named: Ischnura elegans"
+    },
+    {
+      "id": "Sympetrum_sanguineum",
+      "label": "Sympetrum sanguineum",
+      "hover": "A moment in the Odonatraum cloud<br>named: Sympetrum sanguineum"
+    },
+    {
+      "id": "Orthetrum_cancellatum",
+      "label": "Orthetrum cancellatum",
+      "hover": "A moment in the Odonatraum cloud<br>named: Orthetrum cancellatum"
+    },
+    {
+      "id": "Calopteryx_splendens",
+      "label": "Calopteryx splendens",
+      "hover": "A moment in the Odonatraum cloud<br>named: Calopteryx splendens"
+    }
+  ],
+  "links": [
+    {
+      "source": "Aeshna_cyanea",
+      "target": "Lestes_viridis"
+    },
+    {
+      "source": "Aeshna_cyanea",
+      "target": "Ischnura_elegans"
+    },
+    {
+      "source": "Calopteryx_virgo",
+      "target": "Libellula_depressa"
+    },
+    {
+      "source": "Calopteryx_virgo",
+      "target": "Cordulegaster_boltonii"
+    },
+    {
+      "source": "Calopteryx_virgo",
+      "target": "Ischnura_elegans"
+    },
+    {
+      "source": "Calopteryx_virgo",
+      "target": "Calopteryx_splendens"
+    },
+    {
+      "source": "Sympetrum_striolatum",
+      "target": "Coenagrion_puella"
+    },
+    {
+      "source": "Sympetrum_striolatum",
+      "target": "Lestes_viridis"
+    },
+    {
+      "source": "Libellula_depressa",
+      "target": "Lestes_viridis"
+    },
+    {
+      "source": "Libellula_depressa",
+      "target": "Sympetrum_sanguineum"
+    },
+    {
+      "source": "Erythromma_najas",
+      "target": "Anax_imperator"
+    },
+    {
+      "source": "Erythromma_najas",
+      "target": "Enallagma_cyathigerum"
+    },
+    {
+      "source": "Cordulegaster_boltonii",
+      "target": "Orthetrum_cancellatum"
+    },
+    {
+      "source": "Lestes_viridis",
+      "target": "Orthetrum_cancellatum"
+    },
+    {
+      "source": "Platycnemis_pennipes",
+      "target": "Calopteryx_splendens"
+    }
+  ]
+}
